@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/txtDifficulty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Choose a difficulty"
+        android:textSize="20sp"
+        android:layout_marginTop="5sp"
+        />
+    <RadioGroup
+        android:id="@+id/radioDiff"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="15sp"
+        android:layout_marginTop="20sp"
+        >
+        <RadioButton
+            android:id="@+id/easyB"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="easy"
+            android:textSize="19sp">
+
+        </RadioButton>
+        <RadioButton
+            android:id="@+id/mediumB"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="medium"
+            android:textSize="19sp">
+
+        </RadioButton>
+        <RadioButton
+            android:id="@+id/hardB"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="hard"
+            android:textSize="19sp">
+
+        </RadioButton>
+    </RadioGroup>
+    <TextView
+        android:id="@+id/txtType"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Choose a type of task"
+        android:textSize="20sp"
+        android:layout_marginTop="150sp"
+        />
+    <RadioGroup
+        android:id="@+id/radioType"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="15sp"
+        android:layout_marginTop="165sp">
+        <RadioButton
+            android:id="@+id/theoryB"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="theory"
+            android:textSize="19sp">
+
+        </RadioButton>
+        <RadioButton
+            android:id="@+id/practiceB"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="practice"
+            android:textSize="19sp"
+            >
+
+        </RadioButton>
+    </RadioGroup>
+    <Button
+        android:id="@+id/resButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Click"
+        android:layout_marginTop="270sp"
+        android:layout_marginHorizontal="10pt"
+        >
+
+    </Button>
+    <TextView
+        android:id="@+id/taskTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="350sp"
+        android:padding="15sp"
+        android:textSize="20sp"
+        android:textColor="#194023">
+
+    </TextView>
+</RelativeLayout>
