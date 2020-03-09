@@ -1,102 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp">
+    android:padding="10dp">
 
-    <TextView
-        android:id="@+id/txtDifficulty"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/choose_a_difficulty"
-        android:textSize="20sp"
-        android:layout_marginTop="5sp"
-        />
-    <RadioGroup
-        android:id="@+id/radioDiff"
+    <fragment
+        android:id="@+id/fragment4"
+        android:name="com.example.lab1.ChooserFragment"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="15sp"
-        android:layout_marginTop="20sp"
-        >
-        <RadioButton
-            android:id="@+id/easyB"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/easy"
-            android:textSize="19sp">
+        android:layout_height="wrap_content" />
 
-        </RadioButton>
-        <RadioButton
-            android:id="@+id/mediumB"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/medium"
-            android:textSize="19sp">
-
-        </RadioButton>
-        <RadioButton
-            android:id="@+id/hardB"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/hard"
-            android:textSize="19sp">
-
-        </RadioButton>
-    </RadioGroup>
-    <TextView
-        android:id="@+id/txtType"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/choose_a_type_of_task"
-        android:textSize="20sp"
-        android:layout_marginTop="150sp"
-        />
-    <RadioGroup
-        android:id="@+id/radioType"
+    <fragment
+        android:id="@+id/fragment3"
+        android:name="com.example.lab1.InfoFragment"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="15sp"
-        android:layout_marginTop="165sp">
-        <RadioButton
-            android:id="@+id/theoryB"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/theory"
-            android:textSize="19sp">
-
-        </RadioButton>
-        <RadioButton
-            android:id="@+id/practiceB"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/practice"
-            android:textSize="19sp"
-            >
-
-        </RadioButton>
-    </RadioGroup>
-    <Button
-        android:id="@+id/resButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/click"
-        android:layout_marginTop="270sp"
-        android:layout_marginHorizontal="10pt"
-        android:onClick="buttonClicked"
-        >
-
-    </Button>
-    <TextView
-        android:id="@+id/taskTxt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="350sp"
-        android:padding="15sp"
-        android:textSize="20sp"
-        android:textColor="#194023">
-
-    </TextView>
-</RelativeLayout>
+        android:layout_height="wrap_content" />
+</LinearLayout>
