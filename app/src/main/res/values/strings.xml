@@ -8,23 +8,20 @@
     <string name="theory">theory</string>
     <string name="practice">practice</string>
     <string name="click">Click</string>
+    <string name="difficulty">Difficulty:</string>
+    <string name="type">Type:</string>
     <string-array name="tasks">
-        <item>Difficulty: Easy <br/> Type: Theory<br/>
+        <item>
 Describe all present tenses using examples</item>
-        <item>Difficulty: Medium<br/>
-Type: Theory<br/>
+        <item>
 Describe all past tenses using examples</item>
-        <item>Difficulty: Hard<br/>
-Type: Theory<br/>
+        <item>
 Describe all future tenses using examples</item>
-        <item>Difficulty: Easy<br/>
-Type: Practice<br/>
+        <item>
 Write a letter to your pen-friend describing your usual day at school, university or work</item>
-        <item>Difficulty: Medium<br/>
-Type: Practice<br/>
+        <item>
 Write a formal essay about an interesting and well-known historical event</item>
-        <item>Difficulty: Hard<br/>
-Type: Practice<br/>
+        <item>
 Write an opinion essay about new technologies and describe how will our world be look like in 20 years</item>
     </string-array>
 </resources>

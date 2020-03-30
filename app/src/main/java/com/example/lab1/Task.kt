@@ -4,13 +4,24 @@ import android.content.res.Resources
 import androidx.appcompat.app.AppCompatActivity
 
 
-class Task(diff: String, t: String, r: Resources) {
+class Task{
 
-    private var difficulty: String = diff
-    private var type: String = t
-    private var resources: Resources = r
+    var difficulty: String
+    var type: String
+    var description: String
 
-    fun getDescription() : String{
+    constructor(){
+        difficulty = ""
+        type = ""
+        description = ""
+    }
+
+    constructor(d: String, t: String, r: Resources){
+        difficulty = d
+        type = t
+        description = getDescription(r)
+    }
+    private fun getDescription(resources : Resources) : String{
         val taskArray = resources.getStringArray(R.array.tasks)
 
         val diffRate = when(difficulty){
