@@ -5,6 +5,7 @@ import android.content.res.Resources
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.Button
 import android.widget.ExpandableListView
 import android.widget.RadioButton
 import android.widget.Toast
@@ -21,40 +22,15 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun buttonClicked(view: View){
-        val diffId: Int = radioDiff.checkedRadioButtonId
-        val typeIdrad: Int = radioType.checkedRadioButtonId
 
-        val flag: Boolean = (diffId != -1) and (typeIdrad != -1)
+        val flag: Boolean = (radioDiff.checkedRadioButtonId != -1) and (radioType.checkedRadioButtonId != -1)
 
         if (flag) {
-            val difficulty: RadioButton = findViewById(radioDiff.checkedRadioButtonId)
-            val taskType: RadioButton = findViewById(radioType.checkedRadioButtonId)
+            val task = Task(findViewById<RadioButton>(radioDiff.checkedRadioButtonId).text as String,
+                findViewById<RadioButton>(radioType.checkedRadioButtonId).text as String,
+                resources)
 
-            val diffKey: String = difficulty.text as String
-            val typeKey: String = taskType.text as String
-
-            val taskArray = resources.getStringArray(R.array.tasks)
-
-            val diffRate = when(diffKey){
-                "easy" -> 1
-                "medium" -> 2
-                "hard" -> 3
-                else -> 0
-            }
-
-            val typeRate = when(typeKey){
-                "theory" -> 1
-                "practice" -> 2
-                else -> 0
-            }
-
-            val key = if(typeRate == 1){
-                diffRate - typeRate
-            }else{
-                diffRate + typeRate
-            }
-
-            taskTxt.text = taskArray[key]
+            taskTxt.text = task.getDescription()
 
         } else {
             Toast.makeText(
