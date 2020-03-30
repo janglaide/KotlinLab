@@ -13,7 +13,7 @@ import kotlinx.android.synthetic.main.fragment_info.*
 
 
 class ChooserFragment : Fragment() {
-    
+
     private lateinit var data: Task
 
     private lateinit var _resultButton: Button

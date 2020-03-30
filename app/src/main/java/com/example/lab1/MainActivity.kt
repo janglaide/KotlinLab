@@ -26,6 +26,7 @@ class MainActivity : AppCompatActivity() {
     fun replaceFragment(fragment: Fragment){
         val fragmentTransaction = supportFragmentManager.beginTransaction()
         fragmentTransaction.replace(R.id.myFragment, fragment)
+        fragmentTransaction.addToBackStack(null)
         fragmentTransaction.commit()
     }
 
