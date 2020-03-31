@@ -32,7 +32,8 @@
         android:paddingLeft="15sp"
         android:text="@string/type"
         android:textColor="#194023"
-        android:textSize="22sp">
+        android:textSize="22sp"
+        android:layout_marginTop="10sp">
 
     </TextView>
 

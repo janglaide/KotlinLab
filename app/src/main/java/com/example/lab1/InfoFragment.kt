@@ -16,29 +16,15 @@ class InfoFragment(d: Task) : Fragment() {
 
     private var data: Task = d
 
-    private lateinit var descriptionView: TextView
-    private lateinit var typeView: TextView
-    private lateinit var difficultyView: TextView
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            it.getString("difficulty")
-            it.getString("type")
-            it.getString("description")
-        }
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setValues(view)
+    }
 
-        difficultyView = view.findViewById(R.id.taskDiff)
-        typeView = view.findViewById(R.id.taskType)
-        descriptionView = view.findViewById(R.id.taskTxt)
-
-        difficultyView.text = data.difficulty
-        typeView.text = data.type
-        descriptionView.text = data.description
+    private fun setValues(view: View){
+        view.findViewById<TextView>(R.id.taskDiff).text = data.difficulty
+        view.findViewById<TextView>(R.id.taskType).text = data.type
+        view.findViewById<TextView>(R.id.taskTxt).text = data.description
     }
 
     override fun onCreateView(
