@@ -10,6 +10,8 @@
     <string name="click">Click</string>
     <string name="difficulty">Difficulty:</string>
     <string name="type">Type:</string>
+    <string name="history">History</string>
+    <string name="back">Back</string>
     <string-array name="tasks">
         <item>
 Describe all present tenses using examples</item>

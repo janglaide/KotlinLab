@@ -23,7 +23,6 @@ class Task{
     }
     private fun getDescription(resources : Resources) : String{
         val taskArray = resources.getStringArray(R.array.tasks)
-
         val diffRate = when(difficulty){
             "easy" -> 1
             "medium" -> 2

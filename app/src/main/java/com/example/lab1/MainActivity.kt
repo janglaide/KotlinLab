@@ -1,6 +1,7 @@
 package com.example.lab1
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.content.res.Resources
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -30,4 +31,8 @@ class MainActivity : AppCompatActivity() {
         fragmentTransaction.commit()
     }
 
+    fun onHistoryClicked(view: View){
+        val intent = Intent(this, HistoryActivity::class.java)
+        startActivity(intent)
+    }
 }

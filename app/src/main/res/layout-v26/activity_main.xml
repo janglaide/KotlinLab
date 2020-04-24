@@ -12,4 +12,12 @@
         android:layout_height="wrap_content">
 
     </FrameLayout>
+
+    <Button
+        android:id="@+id/buttonHistory"
+        android:layout_width="108dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/button_left_margin"
+        android:text="@string/history"
+        android:onClick="onHistoryClicked"/>
 </LinearLayout>
