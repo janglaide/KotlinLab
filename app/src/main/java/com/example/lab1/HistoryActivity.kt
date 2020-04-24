@@ -1,5 +1,6 @@
 package com.example.lab1
 
+import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -13,6 +14,9 @@ class HistoryActivity : AppCompatActivity() {
     }
 
     fun onBackClicked(view: View){
+        setResult(Activity.RESULT_OK)
+        finish()
+
         val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
     }
