@@ -33,10 +33,20 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun onHistoryClicked(view: View){
-        setResult(Activity.RESULT_OK)
-        finish()
 
-        val intent = Intent(this, HistoryActivity::class.java)
-        startActivity(intent)
+        val db = DBOpenHelperHistory(this, null)
+        val cursor = db.getAllHistory()
+        cursor!!.moveToFirst()
+        if(cursor.count == 0){
+            Toast.makeText(
+                this, "Empty history",
+                Toast.LENGTH_SHORT
+            ).show()
+        }
+        else{
+            onPause()
+            val intent = Intent(this, HistoryActivity::class.java)
+            startActivity(intent)
+        }
     }
 }

@@ -1,19 +1,18 @@
 package com.example.lab1
 
-import android.content.Context
+import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
+import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.fragment_chooser.*
-import kotlinx.android.synthetic.main.fragment_info.*
 
 class ChooserFragment : Fragment() {
 
-    private lateinit var data: Task
+    private lateinit var data: TaskString
 
     private lateinit var _resultButton: Button
     private lateinit var _radioDiff: RadioGroup
@@ -21,7 +20,7 @@ class ChooserFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        data = Task()
+        data = TaskString()
     }
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -31,6 +30,7 @@ class ChooserFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_chooser, container, false)
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         findViews(view)
@@ -57,7 +57,7 @@ class ChooserFragment : Fragment() {
     }
 
     private fun setValues(view: View){
-        val task = Task(
+        val task = TaskString(
             view.findViewById<RadioButton>(_radioDiff.checkedRadioButtonId).text as String,
             view.findViewById<RadioButton>(_radioType.checkedRadioButtonId).text as String,
             resources
@@ -67,7 +67,10 @@ class ChooserFragment : Fragment() {
         data.type = view.findViewById<RadioButton>(_radioType.checkedRadioButtonId).text as String
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     private fun createResult(context: MainActivity){
+        val db = DBOpenHelperHistory(context, null)
+        db.addHistory(1)
         context.replaceFragment(InfoFragment(data))
     }
 }

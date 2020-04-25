@@ -1,0 +1,48 @@
+package com.example.lab1
+
+import android.content.ContentValues
+import android.content.Context
+import android.database.Cursor
+import android.database.sqlite.SQLiteDatabase
+import android.database.sqlite.SQLiteOpenHelper
+import android.os.Build
+import androidx.annotation.RequiresApi
+import com.example.lab1.Entities.Task
+import java.time.LocalDateTime
+
+class DBOpenHelperTask(context: Context, factory : SQLiteDatabase.CursorFactory?) :
+    SQLiteOpenHelper(context, DATABASE_NAME, factory, DATABASE_VERSION) {
+    override fun onCreate(db: SQLiteDatabase) {
+        val CREATE_TASK_TABLE = ("CREATE TABLE " +
+                TABLE_NAME + "(" +
+                COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
+                COLUMN_NAME + " DATETIME" + ")"
+                )
+        db.execSQL((CREATE_TASK_TABLE))
+
+    }
+
+    override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
+        db.execSQL("DROP TABLE IF EXISTS $TABLE_NAME")
+        onCreate(db)
+    }
+
+    fun addTask(task: Task){
+        val values = ContentValues()
+        values.put(COLUMN_NAME, task.name)
+        val db = this.writableDatabase
+        db.insert(TABLE_NAME, null, values)
+        db.close()
+    }
+    fun getAllTasks():Cursor?{
+        val db = this.readableDatabase
+        return db.rawQuery("SELECT * FROM $TABLE_NAME", null)
+    }
+    companion object {
+        private val DATABASE_VERSION = 1
+        private val DATABASE_NAME = "MobilesLab3.db"
+        val TABLE_NAME = "tasks"
+        val COLUMN_ID = "id"
+        val COLUMN_NAME = "name"
+    }
+}

@@ -4,7 +4,7 @@ import android.content.res.Resources
 import androidx.appcompat.app.AppCompatActivity
 
 
-class Task{
+class TaskString{
 
     var difficulty: String
     var type: String
