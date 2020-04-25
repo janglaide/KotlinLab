@@ -16,8 +16,9 @@ class History{
         datetime = Datetime
         taskId = TaskId
     }
-    constructor(Datetime: LocalDateTime, TaskId : Int){
-        datetime = Datetime
+    @RequiresApi(Build.VERSION_CODES.O)
+    constructor(TaskId : Int){
+        datetime = LocalDateTime.now()
         taskId = TaskId
     }
 }

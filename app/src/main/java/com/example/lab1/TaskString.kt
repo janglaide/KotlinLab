@@ -1,6 +1,8 @@
 package com.example.lab1
 
+import android.content.Context
 import android.content.res.Resources
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 
 
@@ -9,20 +11,23 @@ class TaskString{
     var difficulty: String
     var type: String
     var description: String
+    var descriptionId: Int
 
     constructor(){
         difficulty = ""
         type = ""
         description = ""
+        descriptionId = 0
     }
 
-    constructor(d: String, t: String, r: Resources){
+    constructor(d: String, t: String, r: Resources, context: MainActivity){
         difficulty = d
         type = t
-        description = getDescription(r)
+        descriptionId = getDescriptionId(r)
+        description = getDescription(descriptionId, context)
     }
-    private fun getDescription(resources : Resources) : String{
-        val taskArray = resources.getStringArray(R.array.tasks)
+    private fun getDescriptionId(resources : Resources) : Int{
+        //val taskArray = resources.getStringArray(R.array.tasks)
         val diffRate = when(difficulty){
             "easy" -> 1
             "medium" -> 2
@@ -37,11 +42,14 @@ class TaskString{
         }
 
         val key = if(typeRate == 1){
-            diffRate - typeRate
+            diffRate
         }else{
-            diffRate + typeRate
+            diffRate + 3
         }
-
-        return taskArray[key]
+        return key
+    }
+    private fun getDescription(id : Int, context: MainActivity) : String{
+        val db = DBOpenHelperTask(context, null)
+        return db.getTask(id)
     }
 }

@@ -1,5 +1,6 @@
 package com.example.lab1
 
+import android.annotation.SuppressLint
 import android.content.ContentValues
 import android.content.Context
 import android.database.Cursor
@@ -37,6 +38,14 @@ class DBOpenHelperTask(context: Context, factory : SQLiteDatabase.CursorFactory?
     fun getAllTasks():Cursor?{
         val db = this.readableDatabase
         return db.rawQuery("SELECT * FROM $TABLE_NAME", null)
+    }
+    @SuppressLint("Recycle")
+    fun getTask(id: Int): String{
+        val db = this.readableDatabase
+        val cursor = db.rawQuery("SELECT $COLUMN_NAME FROM $TABLE_NAME WHERE id = $id", null)
+        cursor!!.moveToFirst()
+        val tmp = (cursor.getString(cursor.getColumnIndex(DBOpenHelperTask.COLUMN_NAME)))
+        return tmp
     }
     companion object {
         private val DATABASE_VERSION = 1

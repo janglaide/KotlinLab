@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.*
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
+import com.example.lab1.Entities.History
 import kotlinx.android.synthetic.main.fragment_chooser.*
 
 class ChooserFragment : Fragment() {
@@ -56,21 +57,31 @@ class ChooserFragment : Fragment() {
         _resultButton = view.findViewById(R.id.resButton)
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     private fun setValues(view: View){
         val task = TaskString(
             view.findViewById<RadioButton>(_radioDiff.checkedRadioButtonId).text as String,
             view.findViewById<RadioButton>(_radioType.checkedRadioButtonId).text as String,
-            resources
+            resources,
+            view.context as MainActivity
         )
         data.description = task.description
         data.difficulty = view.findViewById<RadioButton>(_radioDiff.checkedRadioButtonId).text as String
         data.type = view.findViewById<RadioButton>(_radioType.checkedRadioButtonId).text as String
+        data.descriptionId = task.descriptionId
+
+        addHistory(task, view.context as MainActivity)
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun addHistory(task : TaskString, context : MainActivity){
+        val db = DBOpenHelperHistory(context, null)
+        val history = History(task.descriptionId)
+        db.addHistory(history)
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
     private fun createResult(context: MainActivity){
-        val db = DBOpenHelperHistory(context, null)
-        db.addHistory(1)
         context.replaceFragment(InfoFragment(data))
     }
 }

@@ -20,6 +20,7 @@ class InfoFragment(d: TaskString) : Fragment() {
         view.findViewById<TextView>(R.id.taskDiff).text = data.difficulty
         view.findViewById<TextView>(R.id.taskType).text = data.type
         view.findViewById<TextView>(R.id.taskTxt).text = data.description
+
     }
 
     override fun onCreateView(

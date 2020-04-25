@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import android.os.Build
 import androidx.annotation.RequiresApi
+import com.example.lab1.Entities.History
 import java.time.LocalDateTime
 
 class DBOpenHelperHistory(context: Context, factory : SQLiteDatabase.CursorFactory?) :
@@ -26,13 +27,14 @@ class DBOpenHelperHistory(context: Context, factory : SQLiteDatabase.CursorFacto
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
-    fun addHistory(taskId : Int){
+    fun addHistory(history: History){
         val values = ContentValues()
-        val INSERT_HISTORY = ("INSERT INTO $TABLE_NAME ($COLUMN_NAME_DATETIME, $COLUMN_NAME_TASKID VALUES (${LocalDateTime.now()}, $taskId)")
-        //values.put(COLUMN_NAME_DATETIME, LocalDateTime.now())
+        val INSERT_HISTORY = ("INSERT INTO $TABLE_NAME ($COLUMN_NAME_DATETIME, $COLUMN_NAME_TASKID) VALUES (datetime('now'), ${history.taskId})")
+
 
         val db = this.writableDatabase
-        //db.insert(TABLE_NAME, null, values)
+
+        //values.put(COLUMN_NAME_DATETIME, )
         db.execSQL(INSERT_HISTORY)
         db.close()
     }
