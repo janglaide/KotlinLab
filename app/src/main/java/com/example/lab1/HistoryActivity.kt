@@ -5,9 +5,6 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.TextView
-import android.widget.Toast
-import com.example.lab1.Entities.Task
 import kotlinx.android.synthetic.main.activity_history.*
 
 class HistoryActivity : AppCompatActivity() {
@@ -17,21 +14,6 @@ class HistoryActivity : AppCompatActivity() {
 
         setContentView(R.layout.activity_history)
 
-        /*historyView.text = ""
-        val db = DBOpenHelperTask(this, null)
-        val cursor = db.getAllTasks()
-        cursor!!.moveToFirst()
-
-        historyView.append((cursor.getString(cursor.getColumnIndex(DBOpenHelperTask.COLUMN_ID))))
-        historyView.append("\t\t")
-        historyView.append((cursor.getString(cursor.getColumnIndex(DBOpenHelperTask.COLUMN_NAME))))
-        while (cursor.moveToNext()) {
-            historyView.append("\n\n")
-            historyView.append((cursor.getString(cursor.getColumnIndex(DBOpenHelperTask.COLUMN_ID))))
-            historyView.append("\t\t")
-            historyView.append((cursor.getString(cursor.getColumnIndex(DBOpenHelperTask.COLUMN_NAME))))
-        }
-        cursor.close()*/
         getHistory()
     }
     private fun getHistory(){
@@ -40,17 +22,25 @@ class HistoryActivity : AppCompatActivity() {
         val cursor = db.getAllHistory()
         cursor!!.moveToFirst()
 
+        historyView.append(cursor.getColumnName(0))
+        historyView.append("\t\t")
+        historyView.append(cursor.getColumnName(1))
+        historyView.append("                            ")
+        historyView.append(cursor.getColumnName(2))
+
+        historyView.append("\n\n")
+
         historyView.append((cursor.getString(cursor.getColumnIndex(DBOpenHelperHistory.COLUMN_ID))))
-        historyView.append("\t\t")
+        historyView.append("\t\t\t")
         historyView.append((cursor.getString(cursor.getColumnIndex(DBOpenHelperHistory.COLUMN_NAME_DATETIME))))
-        historyView.append("\t\t")
+        historyView.append("      ")
         historyView.append((cursor.getString(cursor.getColumnIndex(DBOpenHelperHistory.COLUMN_NAME_TASKID))))
         while (cursor.moveToNext()) {
             historyView.append("\n\n")
             historyView.append((cursor.getString(cursor.getColumnIndex(DBOpenHelperHistory.COLUMN_ID))))
-            historyView.append("\t\t")
+            historyView.append("\t\t\t")
             historyView.append((cursor.getString(cursor.getColumnIndex(DBOpenHelperHistory.COLUMN_NAME_DATETIME))))
-            historyView.append("\t\t")
+            historyView.append("      ")
             historyView.append((cursor.getString(cursor.getColumnIndex(DBOpenHelperHistory.COLUMN_NAME_TASKID))))
         }
         cursor.close()

@@ -9,11 +9,12 @@ import android.widget.*
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import com.example.lab1.Entities.History
+import com.example.lab1.Entities.Task
 import kotlinx.android.synthetic.main.fragment_chooser.*
 
 class ChooserFragment : Fragment() {
 
-    private lateinit var data: TaskString
+    private lateinit var data: Task
 
     private lateinit var _resultButton: Button
     private lateinit var _radioDiff: RadioGroup
@@ -21,7 +22,7 @@ class ChooserFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        data = TaskString()
+        data = Task()
     }
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -59,7 +60,7 @@ class ChooserFragment : Fragment() {
 
     @RequiresApi(Build.VERSION_CODES.O)
     private fun setValues(view: View){
-        val task = TaskString(
+        val task = Task(
             view.findViewById<RadioButton>(_radioDiff.checkedRadioButtonId).text as String,
             view.findViewById<RadioButton>(_radioType.checkedRadioButtonId).text as String,
             resources,
@@ -74,7 +75,7 @@ class ChooserFragment : Fragment() {
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
-    private fun addHistory(task : TaskString, context : MainActivity){
+    private fun addHistory(task : Task, context : MainActivity){
         val db = DBOpenHelperHistory(context, null)
         val history = History(task.descriptionId)
         db.addHistory(history)

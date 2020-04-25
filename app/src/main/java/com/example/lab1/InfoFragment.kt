@@ -6,10 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import com.example.lab1.Entities.Task
 
-class InfoFragment(d: TaskString) : Fragment() {
+class InfoFragment(d: Task) : Fragment() {
 
-    private var data: TaskString = d
+    private var data: Task = d
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

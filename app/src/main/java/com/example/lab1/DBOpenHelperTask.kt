@@ -6,10 +6,7 @@ import android.content.Context
 import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
-import android.os.Build
-import androidx.annotation.RequiresApi
 import com.example.lab1.Entities.Task
-import java.time.LocalDateTime
 
 class DBOpenHelperTask(context: Context, factory : SQLiteDatabase.CursorFactory?) :
     SQLiteOpenHelper(context, DATABASE_NAME, factory, DATABASE_VERSION) {
@@ -30,7 +27,7 @@ class DBOpenHelperTask(context: Context, factory : SQLiteDatabase.CursorFactory?
 
     fun addTask(task: Task){
         val values = ContentValues()
-        values.put(COLUMN_NAME, task.name)
+        values.put(COLUMN_NAME, task.description)
         val db = this.writableDatabase
         db.insert(TABLE_NAME, null, values)
         db.close()
