@@ -28,19 +28,19 @@ class DBOpenHelperHistory(context: Context, factory : SQLiteDatabase.CursorFacto
 
     @RequiresApi(Build.VERSION_CODES.O)
     fun addHistory(history: History){
-        val values = ContentValues()
         val INSERT_HISTORY = ("INSERT INTO $TABLE_NAME ($COLUMN_NAME_DATETIME, $COLUMN_NAME_TASKID) VALUES (datetime('now'), ${history.taskId})")
-
-
         val db = this.writableDatabase
-
-        //values.put(COLUMN_NAME_DATETIME, )
         db.execSQL(INSERT_HISTORY)
         db.close()
     }
     fun getAllHistory(): Cursor?{
         val db = this.readableDatabase
         return db.rawQuery("SELECT * FROM $TABLE_NAME", null)
+    }
+    fun deleteAll(){
+        val db = this.writableDatabase
+        db.execSQL("delete from "+ TABLE_NAME);
+        db.close()
     }
 
     companion object {

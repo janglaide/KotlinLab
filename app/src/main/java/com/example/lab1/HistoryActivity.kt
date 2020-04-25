@@ -47,9 +47,12 @@ class HistoryActivity : AppCompatActivity() {
 
     }
 
-    fun onBackClicked(view: View){
+    fun onClearHistoryClicked(view: View){
         setResult(Activity.RESULT_OK)
         finish()
+
+        val db = DBOpenHelperHistory(this, null)
+        db.deleteAll()
 
         val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
