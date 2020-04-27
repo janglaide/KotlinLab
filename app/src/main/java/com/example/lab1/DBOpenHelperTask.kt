@@ -45,10 +45,10 @@ class DBOpenHelperTask(context: Context, factory : SQLiteDatabase.CursorFactory?
         return tmp
     }
     companion object {
-        private val DATABASE_VERSION = 1
-        private val DATABASE_NAME = "MobilesLab3.db"
-        val TABLE_NAME = "tasks"
-        val COLUMN_ID = "id"
-        val COLUMN_NAME = "name"
+        private const val DATABASE_VERSION = 1
+        private const val DATABASE_NAME = "MobilesLab3.db"
+        const val TABLE_NAME = "tasks"
+        const val COLUMN_ID = "id"
+        const val COLUMN_NAME = "name"
     }
 }

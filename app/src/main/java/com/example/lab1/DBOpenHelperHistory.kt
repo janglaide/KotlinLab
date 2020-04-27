@@ -39,16 +39,16 @@ class DBOpenHelperHistory(context: Context, factory : SQLiteDatabase.CursorFacto
     }
     fun deleteAll(){
         val db = this.writableDatabase
-        db.execSQL("delete from "+ TABLE_NAME);
+        db.execSQL("delete from $TABLE_NAME");
         db.close()
     }
 
     companion object {
-        private val DATABASE_VERSION = 1
-        private val DATABASE_NAME = "MobilesLab3.db"
-        val TABLE_NAME = "history"
-        val COLUMN_ID = "id"
-        val COLUMN_NAME_DATETIME = "datetime"
-        val COLUMN_NAME_TASKID = "taskId"
+        private const val DATABASE_VERSION = 1
+        private const val DATABASE_NAME = "MobilesLab3.db"
+        const val TABLE_NAME = "history"
+        const val COLUMN_ID = "id"
+        const val COLUMN_NAME_DATETIME = "datetime"
+        const val COLUMN_NAME_TASKID = "taskId"
     }
 }

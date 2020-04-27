@@ -63,7 +63,6 @@ class ChooserFragment : Fragment() {
         val task = Task(
             view.findViewById<RadioButton>(_radioDiff.checkedRadioButtonId).text as String,
             view.findViewById<RadioButton>(_radioType.checkedRadioButtonId).text as String,
-            resources,
             view.context as MainActivity
         )
         data.description = task.description

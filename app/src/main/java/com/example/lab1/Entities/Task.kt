@@ -1,6 +1,5 @@
 package com.example.lab1.Entities
 
-import android.content.res.Resources
 import com.example.lab1.DBOpenHelperTask
 import com.example.lab1.MainActivity
 
@@ -19,14 +18,14 @@ class Task{
         descriptionId = 0
     }
 
-    constructor(d: String, t: String, r: Resources, context: MainActivity){
+    constructor(d: String, t: String, context: MainActivity){
         difficulty = d
         type = t
-        descriptionId = getDescriptionId(r)
+        descriptionId = findDescriptionId()
         description = getDescription(descriptionId, context)
     }
 
-    private fun getDescriptionId(resources : Resources) : Int{
+    private fun findDescriptionId(): Int{
         val diffRate = when(difficulty){
             "easy" -> 1
             "medium" -> 2
@@ -40,12 +39,11 @@ class Task{
             else -> 0
         }
 
-        val key = if(typeRate == 1){
+        return if(typeRate == 1){
             diffRate
         }else{
             diffRate + 3
         }
-        return key
     }
     private fun getDescription(id : Int, context: MainActivity) : String{
         val db = DBOpenHelperTask(context, null)
