@@ -26,5 +26,15 @@
         android:onClick="onClearHistoryClicked">
 
     </Button>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/show_tasks"
+        android:layout_marginTop="30sp"
+        android:layout_marginLeft="@dimen/button_left_margin"
+        android:layout_marginStart="@dimen/button_left_margin"
+        android:onClick="onShowTasksClicked"
+>
 
+    </Button>
 </LinearLayout>

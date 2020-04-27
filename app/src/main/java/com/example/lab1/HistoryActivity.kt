@@ -14,6 +14,9 @@ class HistoryActivity : AppCompatActivity() {
 
         setContentView(R.layout.activity_history)
 
+        val actionBar = supportActionBar
+        actionBar!!.title = "Used tasks history"
+
         getHistory()
     }
     private fun getHistory(){
@@ -47,14 +50,18 @@ class HistoryActivity : AppCompatActivity() {
 
     }
 
+    fun onShowTasksClicked(view: View){
+        onPause()
+
+        val intent = Intent(this, TasksActivity::class.java)
+        startActivity(intent)
+    }
+
     fun onClearHistoryClicked(view: View){
         setResult(Activity.RESULT_OK)
         finish()
 
         val db = DBOpenHelperHistory(this, null)
         db.deleteAll()
-
-        val intent = Intent(this, MainActivity::class.java)
-        startActivity(intent)
     }
 }
